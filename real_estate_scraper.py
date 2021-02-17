@@ -49,8 +49,9 @@ def store_output(target_path, target_file, data):
             print(e)
             raise
 
+    # File will be written in UTF-8
     with open(os.path.join(target_path, target_file)+".json", 'w', encoding="utf-8") as outfile:
-        json.dump(data, outfile)
+        json.dump(data, outfile, ensure_ascii = False)
 
 
 
