@@ -1,4 +1,4 @@
-#Project Description
+# Project Description
 Components: 
 - PostGres DB, 
 - Webscraper which scrapes the first page from ```https://www.athome.de/en/``` and provides the data to the Python-Server
