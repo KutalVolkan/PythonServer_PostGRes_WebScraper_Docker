@@ -80,10 +80,10 @@ def creating_records():
     for apartment_no in json_files:
         with open(f'{path}/{apartment_no}') as f:
             data = json.loads(f.read()) 
-            sales_price = data['Sale_price']
-            livable_surface = data['Livable_surface']
-            number_of_rooms = data['Number_of_rooms']
-            location = data['Location']
+            sales_price = clean_format(data['Sale_price'])
+            livable_surface = clean_format(data['Livable_surface'])
+            number_of_rooms = clean_format(data['Number_of_rooms'])
+            location = clean_format(data['Location'])
             create_apartment_table(id_nr, sales_price, livable_surface, number_of_rooms, location)
             id_nr = id_nr + 1
 
@@ -101,12 +101,19 @@ def find_json_filenames(path_to_dir, suffix=".json" ):
     filenames = listdir(path_to_dir)
     return [filename for filename in filenames if filename.endswith(suffix)]
 
+
+
+def clean_format(value):
+    value = value.replace("_", "")
+    return value
+
 if __name__ == '__main__':
     print('Application started')
     path = "./apartment_data/"
     json_files = find_json_filenames(path)
     
-    
+    # delete all apartments in db
+    delete_all_apartments()
     # creating records with scraped data
     creating_records()
     # reading from db and printing into terminal
