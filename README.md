@@ -12,4 +12,5 @@ Open a new Terminal and run ```docker ps``` to list all containers in particular
 You should come into root mode and run ```winpty docker exec -it pgdb bash```. To list all relations run ```\d```. 
 You should see an apartments table, afterwards run ```\c``` to connect to database "postgres" as user "postgres". To list all apartments you uploaded just run ```Select* From apartments;``` and you will see something like this: 
 
-<img src = "../images/db_records.png" width="220" height="240"/>
+![](images/db_records.PNG)
+
